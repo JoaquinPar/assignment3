@@ -62,14 +62,16 @@ async function getPokemon(limit) {
         let response2 = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon[i].name}`);
         let jsonObj2 = await response2.json();
 
+        let sprite = jsonObj2.sprites.other['official-artwork'].front_default;
+
+        console.log(sprite);
+
         for (let j = 0; added < 2; j++) {
             let number = Math.floor(Math.random() * limit * 2) + 1;
             let toChange = document.getElementById(`img${number}`);
 
             if (toChange.getAttribute("src") == "") {
-                setTimeout(() => {
-                    toChange.src = jsonObj2.sprites.other['official-artwork'].front_default;
-                }, 100 * i);
+                toChange.src = sprite;
                 added++;
             } else {
                 number = Math.floor(Math.random() * limit * 2) + 1;
