@@ -2,8 +2,7 @@ body {
   margin: 0px;
 }
 
-#game_grid {
-  border: 2px tomato solid;
+#game-grid {
   width: 600px;
   height: 400px;
   margin: auto;
@@ -11,15 +10,15 @@ body {
   flex-wrap: wrap;
 }
 
-
+/* 6 = 25% */
+/* 9 = 16.66% */
 .card {
-  width: 33.3%;
+  width: 33.33%;
   position: relative;
   transition: transform 1s;
   perspective: 1000px;
   transform-style: preserve-3d;
 }
-
 
 img {
   width: 100%

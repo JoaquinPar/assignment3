@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,43 +8,84 @@
 		<link rel="stylesheet" href="/style.css">
 		<!-- import jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="/index.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 	</head>
-
-	<template>
-		<div class="card">
-			<img id="" class="front_face" src="" alt="">
+	
+	<template id="poke-card">
+		<div id="cards" class="card">
+			<img id="front" class="front_face" src="" alt="">
 			<img class="back_face" src="/back.webp" alt="">
 		</div>
 	</template>
-
+	
 	<body>
-		<div id="game_grid">
-			<div class="card">
-				<img id="img1" class="front_face" src="/001.png" alt="">
-				<img class="back_face" src="/back.webp" alt="">
+		<div id="difficulty" class="flex text-center justify-center mt-4 mb-6 gap-10">
+			<div class="w-20">
+				<button onclick="getPokemon(3)" class="button w-full py-2 text-sm font-semibold text-white bg-green-600 rounded-full shadow-md transition duration-200">Easy</button>
 			</div>
-			<div class="card">
-				<img id="img2" class="front_face" src="/002.png" alt="">
-				<img class="back_face" src="/back.webp" alt="">
+			<div class="w-20">
+				<button onclick="getPokemon(6)" class="button w-full py-2 text-sm font-semibold text-white bg-green-600 rounded-full shadow-md transition duration-200">Medium</button>
 			</div>
-			<div class="card">
-				<img id="img3" class="front_face" src="/003.png" alt="">
-				<img class="back_face" src="/back.webp" alt="">
-			</div>
-			<div class="card">
-				<img id="img4" class="front_face" src="/001.png" alt="">
-				<img class="back_face" src="/back.webp" alt="">
-			</div>
-			<div class="card">
-				<img id="img5" class="front_face" src="/002.png" alt="">
-				<img class="back_face" src="/back.webp" alt="">
-			</div>
-			<div class="card">
-				<img id="img6" class="front_face" src="/003.png" alt="">
-				<img class="back_face" src="/back.webp" alt="">
+			<div class="w-20">
+				<button onclick="getPokemon(9)" class="button w-full py-2 text-sm font-semibold text-white bg-green-600 rounded-full shadow-md transition duration-200">Hard</button>
 			</div>
 		</div>
+		<div id="game" class="hidden flex text-center justify-center mt-4 mb-6 gap-10">
+			<div class="w-20">
+				<button onclick="start()" class="w-full py-2 text-sm font-semibold text-white bg-green-600 rounded-full shadow-md transition duration-200">Start</button>
+			</div>
+			<div class="w-20">
+				<button onclick="reset()" class="w-full py-2 text-sm font-semibold text-white bg-green-600 rounded-full shadow-md transition duration-200">Reset</button>
+			</div>
+		</div>
+		<div class="flex flex-row text-center justify-between px-100">
+			<div class="w-full flex flex-col">
+				<p>Clicks:</p>
+				<p id="clicks"></p>
+			</div>
+			<div class="w-full flex flex-col">
+				<p>Timer:</p>
+				<p id="timer"></p>
+			</div>
+		</div>
+		<div class="flex flex-row text-center justify-center mb-6 gap-10">
+			<div class="w-20">
+				<div class="w-full flex flex-col">
+					<p>Remaining:</p>
+					<p id="pairs-remain"></p>
+				</div>
+			</div>
+			<div class="w-20">
+				<div class="w-full flex flex-col">
+					<p>Matched:</p>
+					<p id="pairs-matched"></p>
+				</div>
+			</div>
+			<div class="w-20">
+				<div class="w-full flex flex-col">
+					<p>Total:</p>
+					<p id="pairs-total"></p>
+				</div>
+			</div>
+		</div>
+		<div id="game-grid" class="grid ring-2 ring-green-600"></div>
+		<div class="text-center justify-center mt-4">
+			<p>Theme Changer</p>
+		</div>
+		<div id="difficulty" class="flex text-center justify-center mt-2 mb-6 gap-10">
+			<div class="w-20">
+				<button onclick="colorChanger('green-600')" class="button w-full py-2 text-sm font-semibold text-white bg-green-600 rounded-full shadow-md transition duration-200">Green</button>
+			</div>
+			<div class="w-20">
+				<button onclick="colorChanger('red-600')" class="button w-full py-2 text-sm font-semibold text-white bg-green-600 rounded-full shadow-md transition duration-200">Red</button>
+			</div>
+			<div class="w-20">
+				<button onclick="colorChanger('blue-600')" class="button w-full py-2 text-sm font-semibold text-white bg-green-600 rounded-full shadow-md transition duration-200">Blue</button>
+			</div>
+		</div>
+		<script src="/cardLoader.js"></script>
+		<script src="/index.js"></script>
+		<script>
+		</script>
 	</body>
-
 </html>
