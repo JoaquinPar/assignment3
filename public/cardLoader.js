@@ -22,7 +22,8 @@ async function getPokemon(limit) {
         document.getElementById("timer").innerText = 15 + " sec.";
     }
 
-    let offset = Math.floor(Math.random() * 1000) + 1;
+    let maxOffset = 1010 - limit;
+    let offset = Math.floor(Math.random() * maxOffset);
     console.log(offset);
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
     let jsonObj = await response.json();
@@ -66,7 +67,9 @@ async function getPokemon(limit) {
             let toChange = document.getElementById(`img${number}`);
 
             if (toChange.getAttribute("src") == "") {
-                toChange.src = jsonObj2.sprites.other['official-artwork'].front_default;
+                setTimeout(() => {
+                    toChange.src = jsonObj2.sprites.other['official-artwork'].front_default;
+                }, 100 * i);
                 added++;
             } else {
                 number = Math.floor(Math.random() * limit * 2) + 1;
